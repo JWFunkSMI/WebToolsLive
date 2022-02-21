@@ -1,0 +1,30 @@
+  <header class="u-clearfix u-custom-color-1 u-header u-sticky u-sticky-0a29 u-header" id="sec-1e9e"><img class="u-expanded-width u-image u-image-default u-image-1" src="../images/water2.png" alt="" data-image-width="1600" data-image-height="618"><a href="https://nicepage.com" class="u-image u-logo u-image-2" data-image-width="245" data-image-height="144">
+        <img src="../images/sani-logo.png" class="u-logo-image u-logo-image-1">
+      </a><nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 700; text-transform: uppercase;">
+          <a class="u-button-style u-custom-active-border-color u-custom-active-color u-custom-border u-custom-border-color u-custom-borders u-custom-color u-custom-hover-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+            <svg viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</symbol>
+</defs></svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-0 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-border-1 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="" style="padding: 8px 80px;">Home</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-border-1 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/HR/Human-resources.html" style="padding: 8px 80px;">Human resources</a><div class="u-nav-popup"><ul class="u-border-2 u-border-grey-75 u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/HR/Human-resources.html">Employee index</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/HR/Payroll.html">Payroll</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/HR/Check-Codes.html">Check Codes</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/HR/Employees.html">HREmployees</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/HR/LaborReport.html">Labor Report</a>
+</li></ul>
+</div>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-border-1 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="" style="padding: 8px 80px;">Reports</a><div class="u-nav-popup"><ul class="u-border-2 u-border-grey-75 u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/VendorReport.html">Vendor Report</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/jobItemsReport.html">Material Shortage Report</a>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/managerTimeReport.html">Manager Time Report</a>
+</li></ul>
+</div>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-border-1 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="" style="padding: 8px 80px;">Tools</a><div class="u-nav-popup"><ul class="u-border-2 u-border-grey-75 u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/Materials-Inspection/Materials-Inspection.html">Materials Inspection</a></li></ul></div>
+</li><li class="u-nav-item"><a class="u-active-custom-color-5 u-black u-border-1 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-2 u-nav-link u-text-hover-black u-text-white" href="https://webtools.sanimatic.local/Employees.html" style="padding: 8px 80px;">Employees</a>
+</li></ul>
+        </div>
+      </nav></header>

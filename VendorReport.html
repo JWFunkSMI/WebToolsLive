@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Check Codes">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>VendorReport</title>
+    <link rel="stylesheet" href="../nicepage.css" media="screen">
+<link rel="stylesheet" href="VendorReport.css" media="screen">
+    <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.2.6, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "../images/sani-logo.png"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="VendorReport">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body">
+<!--#include file="Header.shtml" -->
+    <section class="u-clearfix u-image u-section-1" id="sec-1359" data-image-width="900" data-image-height="550">
+      <div class="u-border-4 u-border-custom-color-2 u-container-style u-custom-color-1 u-expanded-width u-group u-shape-rectangle u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <div class="u-custom-color-1 u-shape u-shape-rectangle u-shape-1">
+        <table class="notranslate time-input ws-table-all">
+                <th style="width:3%;"></th>
+                <th>Vendor ID</th>
+                <th>SDate</th>
+                <th>EDate</th>
+            </tr>
+            <tr>
+                <td><button onclick="addVendor()"> + </button></td>
+                <td><input type="text" id="vendor" size="8"/></td>
+                <td><input type="date" id="sdate" size="8" value="2019-01-01"/></td>
+                <td><input type="date" id="edate" size="8" value="2022-12-31"/></td>
+            </tr>
+        </table>
+          </div>
+        </div>
+      </div>
+      <div class="u-border-4 u-border-custom-color-2 u-custom-color-1 u-shape u-shape-rectangle u-shape-2 table-scrollable">
+        <table class="notranslate vendors ws-table-all">
+            <tr id='labels' class='sticky'>
+                <th></th>
+                <th>Vendor</th>
+                <th>Sdate</th>
+                <th>Edate</th>
+                <th>PROM Changes</th>
+                <th>Pushed</th>
+                <th>Improved</th>
+                <th>Missed PROM Date</th>
+                <th>Total Receits</th>
+                <th>% Missed</th>
+            </tr>
+        </table>
+      </div>
+      <div class="u-container-style u-custom-color-1 u-expanded-width u-group u-shape-rectangle u-group-2">
+        <div class="u-container-layout u-container-layout-2">
+          <img class="u-image u-image-default u-preserve-proportions u-image-1" src="../images/sani-logo.png" alt="" data-image-width="245" data-image-height="144">
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-black u-clearfix u-footer u-footer" id="sec-3ac3"><div class="u-align-left u-clearfix u-sheet u-sheet-1"></div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/templates" target="_blank">
+        <span>Free Template</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="https://nicepage.one" target="_blank">
+        <span>Website Builder</span>
+      </a>. 
+    </section>
+  </body>
+  <script>
+    vendors = [];
+    venText = document.getElementById('vendor');
+    venText.addEventListener("keyup", function(event) {
+        if(event.keyCode == 13)
+            addVendor();
+    });
+    sdateText = document.getElementById('sdate');
+    sdateText.addEventListener("keyup", function(event) {
+        if(event.keyCode == 13)
+            addVendor();
+    });
+    edateText = document.getElementById('edate');
+    edateText.addEventListener("keyup", function(event) {
+        if(event.keyCode == 13)
+            addVendor();
+    });
+    function addVendor(){
+        vendors.push(document.getElementById('vendor').value);
+        r = "https://webtools.sanimatic.local/VendorReport%20addVendor%20" + document.getElementById("vendor").value + "%20" + document.getElementById("sdate").value + "%20" + document.getElementById("edate").value + "%20.py";
+        request = makeHttpObject();
+        request.open("GET",r,true);
+        request.send(null);
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                vals = request.responseText.split(',');
+                tr = document.createElement('tr');
+                tr.id = vendors.length;
+                tr.innerHTML = '<td><button onclick="remove(' + vendors.length + ')">-</button></td><td id="vendor' + vendors.length + '">' + document.getElementById("vendor").value + '</td><td>' + document.getElementById('sdate').value + '</td><td>' + document.getElementById('edate').value + '</td><td>' + vals[0] + '</td><td>' + vals[1] + '</td><td>' + vals[2] + '</td><td>' + vals[3] + '</td><td>' + vals[4] + '</td><td>' + vals[5] + '</td>';
+                current = document.getElementById('labels');
+                current.parentNode.insertBefore(tr, current.nextSibling);
+            }
+        };
+    }
+    function remove(index){
+        r = "https://webtools.sanimatic.local/VendorReport%20removeVendor%20" + document.getElementById("vendor" + index).innerHTML + "%20.py";
+        console.log(r);
+        element = document.getElementById(index);
+        element.remove()
+        request = makeHttpObject();
+        request.open("GET",r,true);
+        request.send(null);
+    }
+	function makeHttpObject() {
+		try {return new XMLHttpRequest();}
+		catch (error) {}
+		try {return new ActiveXObject("Msxml2.XMLHTTP");}
+		catch (error) {}
+		try {return new ActiveXObject("Microsoft.XMLHTTP");}
+		catch (error) {}
+		throw new Error("Could not create HTTP request object.");
+	}
+    function initialize() {
+        r = "https://webtools.sanimatic.local/VendorReport%20getVendors%20.py";
+        request = makeHttpObject();
+        request.open("GET",r,true);
+        request.send(null);
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                console.log(request.responseText);
+                vals = request.responseText.split('\n');
+                for (let i = 0; i < vals.length - 1; i++){
+                    data = vals[i].split(',');
+                    vendors.push(data[i]);
+                    tr = document.createElement('tr');
+                    tr.id = vendors.length;
+                    tr.innerHTML = '<td><button onclick="remove(' + vendors.length + ')">-</button></td><td id="vendor' + vendors.length + '">' + data[0] + '</td><td>' + data[1] + '</td><td>' + data[2] + '</td><td>' + data[3] + '</td><td>' + data[4] + '</td><td>' + data[5] + '</td><td>' + data[6] + '</td><td>' + data[7] + '</td><td>' + data[8] + '</td>';
+                    current = document.getElementById('labels');
+                    current.parentNode.insertBefore(tr, current.nextSibling);
+                }
+            }
+        };
+    }
+    initialize();
+    </script>
+  <style>
+    .time-input th {
+    color: #eda131;
+    }
+    .badge-input {
+    height: 100%;
+    width: 100%;
+    }
+    input {
+    color: black;
+    }
+    .ws-table-all tr:nth-child(even) {
+    background-color: #E7E9EB;
+    }
+    .ws-table-all tr {
+    border-bottom: 1px solid #ddd;
+    }
+    .ws-table-all tr {
+    color: black;
+    background-color: white;
+    display: table-row;
+    }
+    .ws-table-all {
+    color: black;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    display table;
+    border: 1px solid #ccc;
+    }
+    .table-scrollable {
+    height: 100%;
+    overflow-y: auto;
+    }
+    .buttons {
+    background-color: white;
+    color: black;
+    height: 100%;
+    }
+    .sticky{
+    color: black;
+    background: white;
+    position: sticky;
+    top: 0;
+    }
+  </style>
+</html>

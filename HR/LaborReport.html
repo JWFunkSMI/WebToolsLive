@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Check Codes">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Labor Report</title>
+    <link rel="stylesheet" href="../nicepage.css" media="screen">
+<link rel="stylesheet" href="../VendorReport.css" media="screen">
+    <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.2.6, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "../images/sani-logo.png"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Labor Report">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body">
+<!--#include file="../Header.shtml" -->
+    <section class="u-clearfix u-image u-section-1" id="sec-1359" data-image-width="900" data-image-height="550">
+      <div class="u-border-4 u-border-custom-color-2 u-container-style u-custom-color-1 u-expanded-width u-group u-shape-rectangle u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <div class="u-custom-color-1 u-shape u-shape-rectangle u-shape-1">
+        <table class="notranslate time-input ws-table-all">
+                <th></th>
+                <th>SDate</th>
+                <th>EDate</th>
+                <th></th>
+                <th>Group</th>
+                <th>Type</th>
+            </tr>
+            <tr>
+                <td><button onclick='changeTime("<")'><</button></td>
+                <td><input type="date" id='sdate' oninput='getHours()'></td>
+                <td><input type="date" id='edate' oninput='getHours()'></td>
+                <td><button onclick='changeTime(">")'>></button></td>
+                <td><select oninput='getHours()' id="group">
+                    <option value="S">Shop</option>
+                    <option value="O">Office</option>
+                </select></td>
+                <td><select oninput='getHours()' id="type">
+                    <option value="M">Management</option>
+                    <option value="F">Financial</option>
+                </select></td>
+            </tr>
+        </table>
+          </div>
+        </div>
+      </div>
+      <div class="u-border-4 u-border-custom-color-2 u-custom-color-1 u-shape u-shape-rectangle u-shape-2 table-scrollable">
+        <table class="notranslate vendors ws-table-all" id="employees">
+        </table>
+      </div>
+      <div class="u-container-style u-custom-color-1 u-expanded-width u-group u-shape-rectangle u-group-2">
+        <div class="u-container-layout u-container-layout-2">
+          <img class="u-image u-image-default u-preserve-proportions u-image-1" src="../images/sani-logo.png" alt="" data-image-width="245" data-image-height="144">
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-black u-clearfix u-footer u-footer" id="sec-3ac3"><div class="u-align-left u-clearfix u-sheet u-sheet-1"></div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/templates" target="_blank">
+        <span>Free Template</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="https://nicepage.one" target="_blank">
+        <span>Website Builder</span>
+      </a>. 
+    </section>
+  </body>
+  <script>
+	function makeHttpObject() {
+		try {return new XMLHttpRequest();}
+		catch (error) {}
+		try {return new ActiveXObject("Msxml2.XMLHTTP");}
+		catch (error) {}
+		try {return new ActiveXObject("Microsoft.XMLHTTP");}
+		catch (error) {}
+		throw new Error("Could not create HTTP request object.");
+	}
+    function initialize() {
+        r = "https://webtools.sanimatic.local/HR/payPeriod%20.py";
+        request = makeHttpObject();
+        request.open("GET",r,true);
+        request.send(null);
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                document.getElementById("sdate").value = request.responseText.split(' ')[0];
+                document.getElementById("edate").value = request.responseText.split(' ')[1].split('\r')[0];
+                getHours();
+            }
+        };
+    }
+    initialize();
+    function changeTime(direction) {
+        diff = 14;
+        if (direction == '<')
+            diff = -14;
+        sdate = new Date(document.getElementById('sdate').value);
+        edate = new Date(document.getElementById('edate').value);
+        sdate.setDate(sdate.getDate() + diff);
+        edate.setDate(edate.getDate() + diff);
+        document.getElementById("sdate").value = sdate.toISOString().split('T')[0];
+        document.getElementById("edate").value = edate.toISOString().split('T')[0];
+        getHours();
+    }
+    function getHours() {
+        r = "https://webtools.sanimatic.local/HR/getLaborHours%20" + document.getElementById("sdate").value + "%20" + document.getElementById("edate").value + "%20" + document.getElementById("group").value + "%20" + document.getElementById("type").value + "%20.py";
+        request = makeHttpObject();
+        request.open("GET",r,true);
+        request.send(null);
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                console.log(request.responseText);
+                html = "<tr id='labels' class='sticky'><td>Name</td><td>Reg</td><td>OT</td><td>Sat</td><td>Sun</td><td>Vac</td><td>Sick</td><td>Funeral</td><td>Jury</td><td>Total</td></tr>";
+                if (document.getElementById("type").value == 'F')
+                    html = "<tr id='labels' class='sticky'><td>Name</td><td>Reg</td><td>OT</td><td>DOT</td><td>Vac</td><td>Sick</td><td>Funeral</td><td>Jury</td><td>Total</td></tr>";
+                entries = request.responseText.split('\n');
+                for (let i = 0;i < entries.length - 1; i++){
+                    vals = entries[i].split(' ');
+                    if (document.getElementById("type").value == 'F')
+                        html += "<tr><td>" + vals[0] + "</td><td>" + vals[1] + "</td><td>" + vals[2] + "</td><td>" + vals[3] + "</td><td>" + vals[4] + "</td><td>" + vals[5] + "</td><td>" + vals[6] + "</td><td>" + vals[7] + "</td><td>" + vals[8] + "</td></tr>";
+                    else
+                        html += "<tr><td>" + vals[0] + "</td><td>" + vals[1] + "</td><td>" + vals[2] + "</td><td>" + vals[3] + "</td><td>" + vals[4] + "</td><td>" + vals[5] + "</td><td>" + vals[6] + "</td><td>" + vals[7] + "</td><td>" + vals[8] + "</td><td>" + vals[9] + "</td></tr>";
+                }
+                if (document.getElementById("type").value == 'F')
+                    html += "<tr><td>Name</td><td>Reg</td><td>OT</td><td>DOT</td><td>Vac</td><td>Sick</td><td>Funeral</td><td>Jury</td><td>Total</td></tr>";
+                else
+                    html += "<tr><td>Name</td><td>Reg</td><td>OT</td><td>Sat</td><td>Sun</td><td>Vac</td><td>Sick</td><td>Funeral</td><td>Jury</td><td>Total</td></tr>";
+                document.getElementById("employees").innerHTML = html;
+            }
+        };
+    }
+    function expand(badge) {
+        for (let i = 1;i < rows - 1;i++){
+            if (document.getElementById("m" + i).innerHTML == badge){
+                console.log(i);
+                document.getElementById("row" + i).style = '';
+            }
+        }
+        document.getElementById('button' + badge).innerHTML = '<button onclick="retract(' + badge + ')">-</button>';
+    }
+    function retract(badge) {
+        for (let i = 1;i < rows - 1;i++){
+            if (document.getElementById("m" + i).innerHTML == badge){
+                console.log(i);
+                document.getElementById("row" + i).style = 'display: none;';
+            }
+        }
+        document.getElementById('button' + badge).innerHTML = '<button onclick="expand(' + badge + ')">+</button>';
+    }
+    </script>
+  <style>
+    .time-input th {
+    color: #eda131;
+    }
+    .badge-input {
+    height: 100%;
+    width: 100%;
+    }
+    input {
+    color: black;
+    }
+    .ws-table-all tr:nth-child(even) {
+    background-color: #E7E9EB;
+    }
+    .ws-table-all tr {
+    border-bottom: 1px solid #ddd;
+    }
+    .ws-table-all tr {
+    color: black;
+    background-color: white;
+    display: table-row;
+    }
+    .ws-table-all {
+    color: black;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    display table;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    }
+    .table-scrollable {
+    height: 100%;
+    overflow-y: auto;
+    }
+    .buttons {
+    background-color: white;
+    color: black;
+    height: 100%;
+    }
+    .sticky{
+    color: black;
+    background: white;
+    position: sticky;
+    top: 0;
+    }
+  </style>
+</html>

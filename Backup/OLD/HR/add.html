@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1>Add</h1>
+		<form>
+			<input type="text" id="fbadge"/>
+			<input type="text" id="fempID"/>
+			<input type="text" id="ffname"/>
+			<input type="text" id="flname"/>
+			<select id="fpay">
+				<option value="hourly">Hourly</option>
+				<option value="daily">Daily</option>
+				<option value="weekly">Weekly</option>
+				<option value="salaried">Salaried</option>
+			</select>
+			<select id="fdept">
+				<option value="41">Shop</option>
+				<option value="42">MfgAdm</option>
+				<option value="fldsvc">FldSvc</option>
+				<option value="sales">Sales</option>
+				<option value="engr">Engr</option>
+				<option value="engpd">EngPD</option>
+				<option value="81">GenAdm</option>
+			</select>
+		</form>
+		<button onclick='request("http://webtools.sanimatic.local:5000?q=filteredEmployees&badge=" + document.getElementById("fbadge").value + "&empID=" + document.getElementById("fempID").value + "&fname=" + document.getElementById("ffname").value + "&lname=" + document.getElementById("flname").value + "&pay=" + document.getElementById("fpay").options[document.getElementById("fpay").selectedIndex].text + "&deptid=" + document.getElementById("fdept").options[document.getElementById("fdept").selectedIndex].value)'>Add</button>
+	</body>
+	<script>
+
+	function makeHttpObject() {
+		try {return new XMLHttpRequest();}
+		catch (error) {}
+		try {return new ActiveXObject("Msxml2.XMLHTTP");}
+		catch (error) {}
+		try {return new ActiveXObject("Microsoft.XMLHTTP");}
+		catch (error) {}
+		throw new Error("Could not create HTTP request object.");
+	}
+
+	function request(r) {
+		var request = makeHttpObject();
+		request.open("GET", r, true);
+		request.send(null);
+		request.onreadystatechange = function() {
+    			if (request.readyState == 4){
+				document.getElementById("content").innerHTML = request.responseText;
+			}
+		};
+	}
+
+				//var link = document.createElement('a');
+				//link.download = 'data.txt';
+				//var blob = new Blob([obj], {type: 'text/plain'});
+				//link.href = window.URL.createObjectURL(blob);
+				//link.click();
+	</script>
+</html> 
+

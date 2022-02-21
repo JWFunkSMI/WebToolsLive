@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1>Update</h1>
+		<form>
+			<input type="text" id="badge"/>
+			<input type="text" id="empID"/>
+			<input type="text" id="fname"/>
+			<input type="text" id="lname"/>
+			<select id="pay">
+				<option value=""></option>
+				<option value="hourly">Hourly</option>
+				<option value="daily">Daily</option>
+				<option value="weekly">Weekly</option>
+				<option value="salaried">Salaried</option>
+			</select>
+			<select id="dept">
+				<option value=""></option>
+				<option value="41">Shop</option>
+				<option value="42">MfgAdm</option>
+				<option value="fldsvc">FldSvc</option>
+				<option value="sales">Sales</option>
+				<option value="engr">Engr</option>
+				<option value="engpd">EngPD</option>
+				<option value="81">GenAdm</option>
+			</select>
+		</form>
+		<button onclick='request("http://webtools.sanimatic.local:5000?q=updateEmployee&badge=" + document.getElementById("badge").value + "&empid=" + document.getElementById("empID").value + "&fname=" + document.getElementById("fname").value + "&lname=" + document.getElementById("lname").value + "&paytype=" + document.getElementById("pay").options[document.getElementById("pay").selectedIndex].text + "&dept=" + document.getElementById("dept").options[document.getElementById("dept").selectedIndex].text + "&deptid=" + document.getElementById("dept").options[document.getElementById("dept").selectedIndex].value)'>Update</button><div id="results"></div>
+	</body>
+	<script>
+
+	function makeHttpObject() {
+		try {return new XMLHttpRequest();}
+		catch (error) {}
+		try {return new ActiveXObject("Msxml2.XMLHTTP");}
+		catch (error) {}
+		try {return new ActiveXObject("Microsoft.XMLHTTP");}
+		catch (error) {}
+		throw new Error("Could not create HTTP request object.");
+	}
+
+	function request(r) {
+		var request = makeHttpObject();
+		request.open("GET", r, true);
+		request.send(null);
+		request.onreadystatechange = function() {
+    			if (request.readyState == 4){
+				document.getElementById("content").innerHTML = request.responseText;
+			}
+		};
+	}
+
+				//var link = document.createElement('a');
+				//link.download = 'data.txt';
+				//var blob = new Blob([obj], {type: 'text/plain'});
+				//link.href = window.URL.createObjectURL(blob);
+				//link.click();
+	</script>
+</html> 
+

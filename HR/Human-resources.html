@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Human Resources​">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Human resources</title>
+    <link rel="stylesheet" href="../nicepage.css" media="screen">
+<link rel="stylesheet" href="Human-resources1.1.css" media="screen">
+    <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.2.6, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "../images/sani-logo.png"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Human resources">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body">
+<!--#include file="../Header.shtml" -->
+    <section class="u-clearfix u-section-1" id="sec-fe77">
+      <div class="u-border-4 u-border-custom-color-2 u-custom-color-1 u-expanded-width u-shape u-shape-rectangle u-shape-1"></div>
+      <h1 class="u-text u-text-custom-color-2 u-title u-text-1">
+        <span style="font-weight: 700;">Human Resources </span>
+      </h1>
+      <div class="u-custom-color-3 u-expanded-width u-shape u-shape-rectangle u-shape-2"></div>
+      <img class="u-image u-image-default u-image-1" src="../images/3081176370.png" alt="" data-image-width="1280" data-image-height="859">
+      <div class="u-border-7 u-border-custom-color-2 u-custom-color-1 u-shape u-shape-rectangle u-shape-3">
+        <table class="ws-table-all notranslate">
+            <tr>
+                <th>Badge</th>
+                <th>PayID</th>
+                <th>FName</th>
+                <th>LName</th>
+                <th>Dept</th>
+                <th>Pay</th>
+                <th>Reminder</th>
+                <th>SickDays</th>
+                <th>VacDays</th>
+            </tr>
+            <tr>
+                <td><input oninput='Filter()' type="text" id="fbadge" size="2"/></td>
+                <td><input oninput='Filter()' type="text" id="fempID" size="2"/></td>
+                <td><input oninput='Filter()' type="text" id="ffname" size="7"/></td>
+                <td><input oninput='Filter()' type="text" id="flname" size="7"/></td>
+                <td><select oninput='Filter()' id="fdept">
+                    <option value="0"></option>
+                    <option value="41">Shop</option>
+                    <option value="42">MfgAdm</option>
+                    <option value="44">FldSvc</option>
+                    <option value="61">Sales</option>
+                    <option value="71">Engr</option>
+                    <option value="72">EngPD</option>
+                    <option value="81">GenAdm</option>
+                </select></td>
+                <td><select oninput='Filter()' id="fpay">
+                    <option value=""></option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="salaried">Salaried</option>
+                </select></td>
+                <td><select id="freminder">
+                    <option value="1">ON</option>
+                    <option value="0">OFF</option>
+                </select></td>
+                <td><input type="text" id="fssick" size="7"/></td>
+                <td><input type="text" id="fsvac" size="7"/></td>
+            </tr>
+        </table>
+        <div class="buttons"><button onclick='Add()'>ADD</button><button onclick='Remove()'>REMOVE</button><button onclick='Update()'>UPDATE</button><button onclick='Clear()'>Clear</button></div>
+      </div>
+      <div class="u-border-7 u-border-custom-color-2 u-custom-color-1 u-shape u-shape-rectangle u-shape-4 table-scrollable">
+        <table class="ws-table-all notranslate" id="employeeList">
+        </table>
+      </div>
+      <div class="u-container-style u-custom-color-1 u-expanded-width u-group u-shape-rectangle u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <img class="u-image u-image-default u-preserve-proportions u-image-2" src="../images/sani-logo.png" alt="" data-image-width="245" data-image-height="144">
+        </div>
+      </div><span class="u-file-icon u-icon u-text-custom-color-2 u-icon-1"><img src="../images/1.png" alt=""></span><span class="u-file-icon u-icon u-text-custom-color-2 u-icon-2"><img src="../images/1.png" alt=""></span>
+    </section>
+    
+    
+    <footer class="u-align-center u-black u-clearfix u-footer u-footer" id="sec-3ac3"><div class="u-align-left u-clearfix u-sheet u-sheet-1"></div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+        <span>Website Templates</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="" target="_blank">
+        <span>Website Builder Software</span>
+      </a>. 
+    </section>
+  </body>
+  <script>
+	function makeHttpObject() {
+		try {return new XMLHttpRequest();}
+		catch (error) {}
+		try {return new ActiveXObject("Msxml2.XMLHTTP");}
+		catch (error) {}
+		try {return new ActiveXObject("Microsoft.XMLHTTP");}
+		catch (error) {}
+		throw new Error("Could not create HTTP request object.");
+	}
+    Filter();
+    function autoFill(index){
+        document.getElementById('fbadge').value = document.getElementById('badge' + index).innerHTML.split('>')[1].split('<')[0];
+        document.getElementById('fempID').value = document.getElementById('empid' + index).innerHTML.split(' ');
+        document.getElementById('ffname').value = document.getElementById('name' + index).innerHTML.split(' ')[0];
+        document.getElementById('flname').value = document.getElementById('name' + index).innerHTML.split(' ')[1];
+    }
+    function Clear(){
+        document.getElementById('fbadge').value = '';
+        document.getElementById('fempID').value = '';
+        document.getElementById('ffname').value = '';
+        document.getElementById('flname').value = '';
+        Filter();
+    }
+    function Filter() {//TODO: make filter client side
+        let badge = document.getElementById("fbadge").value;
+        if (badge == '') badge = 'null';
+        let empid = document.getElementById("fempID").value;
+        if (empid == '') empid = 'null';
+        let fname = document.getElementById("ffname").value;
+        if (fname == '') fname = 'null';
+        let lname = document.getElementById("flname").value;
+        if (lname == '') lname = 'null';
+        let pay = document.getElementById("fpay").options[document.getElementById("fpay").selectedIndex].text;
+        if (pay == '') pay = 'null';
+        let dept = document.getElementById("fdept").options[document.getElementById("fdept").selectedIndex].text;
+        if (dept == '') dept = 'null';
+        r = "https://webtools.sanimatic.local/HR/index%20" + badge + "%20" + empid + "%20" + fname + "%20" + lname + "%20" + dept + "%20" + pay + "%20.py";
+        console.log(r);
+		var request = makeHttpObject();
+		request.open("GET", r, true);
+		request.send(null);
+		request.onreadystatechange = function() {
+            if (request.readyState == 4){
+                index = 0;
+                html = "<tr><th>Badge</th><th>PayID</th><th>Name</th><th>Dept</th><th>Pay</th><th>Reminder</th><th>Tally</th><th>SS</th><th>US</th><th>CS</th><th>SV</th><th>UV</th><th>CV</th></tr>";
+                console.log(request.responseText);
+                entries = request.responseText.split("\n");
+                if (entries.length == 1){
+                    r = "https://webtools.sanimatic.local/HR/index%20" + badge + "%20null%20null%20null%20null%20null%20.py";
+                    var request2 = makeHttpObject();
+                    request2.open("GET", r, true);
+                    request2.send(null);
+                    request2.onreadystatechange = function() {
+                        if (request2.readyState == 4){
+                            index = 0;
+                            console.log(request2.responseText);
+                            entries = request2.responseText.split("\n");
+                            console.log(entries);
+                            filterGenerateLines(entries);
+                        }
+                    };
+                }
+                else{
+                    console.log(entries);
+                    filterGenerateLines(entries);
+                }
+			}
+		};
+    }
+    function filterGenerateLines(entries){
+        html = "<tr><th>Badge</th><th>PayID</th><th>Name</th><th>Dept</th><th>Pay</th><th>Reminder</th><th>Tally</th><th>SS</th><th>US</th><th>CS</th><th>SV</th><th>UV</th><th>CV</th></tr>";
+        for (let i = 0;i < entries.length - 1; i++){
+            values = entries[i].split(",");
+            reminder = 'OFF'
+            if (values[6] == '1'){
+                reminder = 'ON';
+            }
+            html = html + "<tr id=" + index + " onclick='autoFill(" + index + ")'><td id='badge" + index + "'><a href='https://webtools.sanimatic.local/HR/Employees.html?badge=" + values[0] + "'>" + values[0] + "</a></td><td id='empid" + index + "'>" + values[1] + "</td><td onclick='expand(" + index + ")' id='name" + index + "'>" + values[2] + " " + values[3] + "</td><td id='dept" + index + "'>" + values[4] + "</td><td id='pay" + index + "'>" + values[5] + "</td><td>" + reminder + "</td><td>" + values[7] + "</td><td>" + values[8] + "</td><td>" + values[9] + "</td><td>" + values[10] + "</td><td>" + values[11] + "</td><td>" + values[12] + "</td><td>" + values[13] + "</td></tr>";
+            index = index + 1;
+        }
+        document.getElementById("employeeList").innerHTML = html;
+    }
+    function Remove() {//TODO: input validation
+        let badge = document.getElementById("fbadge").value;
+        if (badge == '') badge = 'null';
+        r = "https://webtools.sanimatic.local/HR/removeEmployee%20" + badge + "%20.py";
+        console.log(r);
+		var request = makeHttpObject();
+		request.open("POST", r, true);//TODO: POST
+		request.send(null);
+		request.onreadystatechange = function() {
+            if (request.readyState == 4){
+                Filter();
+			}
+		};
+        
+    }
+    function Update() {//TODO: input validation
+        let badge = document.getElementById("fbadge").value;
+        if (badge == '') badge = 'null';
+        let empid = document.getElementById("fempID").value;
+        if (empid == '') empid = 'null';
+        let fname = document.getElementById("ffname").value;
+        if (fname == '') fname = 'null';
+        let lname = document.getElementById("flname").value;
+        if (lname == '') lname = 'null';
+        let pay = document.getElementById("fpay").options[document.getElementById("fpay").selectedIndex].text;
+        if (pay == '') pay = 'null';
+        let dept = document.getElementById("fdept").options[document.getElementById("fdept").selectedIndex].text;
+        if (dept == '') dept = 'null';
+        let deptid = document.getElementById("fdept").options[document.getElementById("fdept").selectedIndex].value;
+        if (dept == 'null') deptid = 'null';
+        let reminder = document.getElementById("freminder").options[document.getElementById("freminder").selectedIndex].value;
+        let ssick = document.getElementById("fssick").value;
+        if (ssick == '') ssick = 'null';
+        let svac = document.getElementById("fsvac").value;
+        if (svac == '') svac = 'null';
+        r = "https://webtools.sanimatic.local/HR/updateEmployee%20" + badge + "%20" + empid + "%20" + fname + "%20" + lname + "%20" + dept + "%20" + deptid + "%20" + pay + "%20" + reminder + "%20" + ssick + "%20" + svac + "%20.py";
+        console.log(r);
+		var request = makeHttpObject();
+		request.open("POST", r, true);//TODO: POST
+		request.send(null);
+		request.onreadystatechange = function() {
+            if (request.readyState == 4){
+                Filter();
+			}
+		};
+        
+    }
+    function Add() {//TODO: input validation
+        let badge = document.getElementById("fbadge").value;
+        if (badge == '') badge = 'null';
+        let empid = document.getElementById("fempID").value;
+        if (empid == '') empid = 'null';
+        let fname = document.getElementById("ffname").value;
+        if (fname == '') fname = 'null';
+        let lname = document.getElementById("flname").value;
+        if (lname == '') lname = 'null';
+        let pay = document.getElementById("fpay").options[document.getElementById("fpay").selectedIndex].text;
+        if (pay == '') pay = 'null';
+        let dept = document.getElementById("fdept").options[document.getElementById("fdept").selectedIndex].text;
+        if (dept == '') dept = 'null';
+        let deptid = document.getElementById("fdept").options[document.getElementById("fdept").selectedIndex].value;
+        let reminder = document.getElementById("freminder").options[document.getElementById("freminder").selectedIndex].value;
+        let ssick = document.getElementById("fssick").value;
+        if (ssick == '') ssick = '0';
+        let svac = document.getElementById("fsvac").value;
+        if (svac == '') svac = '0';
+        r = "https://webtools.sanimatic.local/HR/addEmployee%20" + badge + "%20" + empid + "%20" + fname + "%20" + lname + "%20" + dept + "%20" + deptid + "%20" + pay + "%20" + reminder + "%20" + ssick + "%20" + svac + "%20.py";
+        console.log(r);
+		var request = makeHttpObject();
+		request.open("GET", r, true);//TODO: POST
+		request.send(null);
+		request.onreadystatechange = function() {
+            if (request.readyState == 4){
+                Filter();
+			}
+		};
+        
+    }
+  </script>
+  <style>
+    tr {
+    text-align: center;
+    }
+    .ws-table-all tr:nth-child(even) {
+    background-color: #E7E9EB;
+    }
+    .ws-table-all tr {
+    border-bottom: 1px solid #ddd;
+    }
+    tr {
+    color: black;
+    background-color: white;
+    display: table-row;
+    }
+    .ws-table-all {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    display table;
+    border: 1px solid #ccc;
+    }
+    .table-scrollable {
+    height: 100%;
+    overflow-y: auto;
+    }
+    .buttons {
+    background-color: white;
+    color: black;
+    height: 100%;
+    }
+    th {
+    background: white;
+    position: sticky;
+    top: 0;
+    }
+  </style>
+</html>

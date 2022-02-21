@@ -1,0 +1,29 @@
+import query
+def buildTree():
+    managers = {}
+    entries = query.Query("SELECT Badge, ReportsTo FROM Stark.dbo.Employee_Info")
+    for entry in entries:
+        if entry[1] not in managers:
+            managers[entry[1]] = [] 
+        managers[entry[1]].append(entry[0])
+    return managers
+def printSubbordinates(badge, chain, managers):
+    if len(chain) != 0 and chain[0] == ',':
+        chain = chain[1:len(chain)]
+    subbordinates = managers[badge]
+    for s in subbordinates:
+        print(chain + badge + ',' + s)
+        if s in managers:
+            printSubbordinates(s,chain + badge + ',', managers)
+def getSubbordinatesHours(badge, sdate, edate, managers):
+    subbordinates = managers[badge]
+    for s in subbordinates:
+        entries = query.Query("SELECT HW.CODE_PAY_DC AS Code, SUM(HW.HR_PAID) AS Hours FROM Stark.dbo.Employees_Master AS EM LEFT OUTER JOIN Stark.dbo.HoursWorked_Master AS HW ON EM.ID_BADGE=HW.ID_BADGE INNER JOIN Stark.dbo.Date_Info AS DI ON HW.Date_TRX = DI.Date JOIN Stark.dbo.Employee_Info AS EI ON EM.ID_BADGE=EI.Badge WHERE EI.Badge='" + s + "'AND DI.Date>='" + sdate + "' AND DI.Date<= '" + edate + "'   GROUP BY HW.CODE_PAY_DC")
+        hoursDict = {}
+        for entry in entries:
+            hoursDict[entry[0]] = entry[1]
+        empInfo = query.Query("SELECT FirstName, LastName, VacationHours, SickHours FROM Stark.dbo.Employee_Info WHERE Badge='" + s + "'")[0]
+        print(empInfo[0] + ' ' + empInfo[1] + ',' + hoursDict['E1'] + ',' + hoursDict['E2'] + ',' + hoursDict['E3'] + ',' + hoursDict['EP'] + ',' + str(int(empInfo[2]) - int(hoursDict['EP'])) + ',' + hoursDict['ES']) + ',' + str(int(empInfo[3]) - int(hoursDict['ES']))
+        if s in managers:
+            getSubbordinatesHours(s, sdate, edate, managers)
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1>HR</h1>
+
+		<button onclick="window.location.href='runPR.html'">Payroll</button>
+		<button onclick="window.location.href='search.html'">Search</button>
+		<button onclick="window.location.href='add.html'">Add</button>
+		<button onclick="window.location.href='remove.html'">Remove</button>
+		<button onclick="window.location.href='update.html'">Update</button>
+		<button onclick="window.location.href='badcodes.html'">Check Codes</button>
+
+	
+	</body>
+	<script>
+
+	function makeHttpObject() {
+		try {return new XMLHttpRequest();}
+		catch (error) {}
+		try {return new ActiveXObject("Msxml2.XMLHTTP");}
+		catch (error) {}
+		try {return new ActiveXObject("Microsoft.XMLHTTP");}
+		catch (error) {}
+		throw new Error("Could not create HTTP request object.");
+	}
+
+	function request(r) {
+		var request = makeHttpObject();
+		request.open("GET", r, true);
+		request.send(null);
+		request.onreadystatechange = function() {
+    			if (request.readyState == 4){
+				document.getElementById("content").innerHTML = request.responseText;
+			}
+		};
+	}
+
+				//var link = document.createElement('a');
+				//link.download = 'data.txt';
+				//var blob = new Blob([obj], {type: 'text/plain'});
+				//link.href = window.URL.createObjectURL(blob);
+				//link.click();
+	</script>
+</html> 
+
